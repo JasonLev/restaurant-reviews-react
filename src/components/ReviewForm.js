@@ -15,13 +15,16 @@ class ReviewForm extends Component {
     this.submitHandler = this.submitHandler.bind(this)
   }
   handleNameChange(event){
-    this.setState({name: event.target.value})
+    this.setState({name: event.target.value.trim()})
   }
   handleRatingChange(event){
     this.setState({rating: parseInt(event.target.value)*20})
   }
   handleContentChange(event){
-    this.setState({content: event.target.value})
+    let content = event.target.value
+    if (content.length) {
+      this.setState({content: content.trim()})
+    }
   }
   submitHandler(e){
     e.preventDefault()
