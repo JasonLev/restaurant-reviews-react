@@ -16,9 +16,16 @@ class App extends Component {
       selectedId: restaurants[0].id
     }
     this.restaurantClick = this.restaurantClick.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   restaurantClick(event) {
     this.setState({selectedId: parseInt(event.currentTarget.id)})
+  }
+  handleSubmit(formState){
+    formState.restaurant_id = this.state.selectedId
+    this.setState({
+      reviews: [...this.state.reviews, formState]
+    });
   }
   render() {
     let restaurantComponents = restaurants.map(restaurant => {
@@ -45,7 +52,7 @@ class App extends Component {
           <div className="small-7 small-offset-1 columns">
             <h2>Reviews for {this.state.restaurants[this.state.selectedId].name}</h2>
             <Reviews data={relevantReviews} />
-            <ReviewForm restaurant_id={this.state.selectedId} />
+            <ReviewForm handleSubmit={this.handleSubmit}/>
           </div>
         </div>
       </div>
