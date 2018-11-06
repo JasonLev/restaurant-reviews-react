@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Ratings from './Ratings'
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -30,7 +31,6 @@ class ReviewForm extends Component {
       rating: 20,
       content: ''
     });
-    // document.getElementById(`star-${this.state.rating/20}`).setAttribute("checked", false);
   }
   render() {
     return (
@@ -48,37 +48,7 @@ class ReviewForm extends Component {
           <div>
             <fieldset className="fieldset" onChange={this.handleRatingChange}>
               <legend>Rating:</legend>
-              <input className="star"
-                     id="star-1"
-                     type="radio"
-                     name="star"
-                     defaultChecked
-                     value="1"/>
-              <label htmlFor="star-1">1</label>
-              <input className="star"
-                     id="star-2"
-                     type="radio"
-                     name="star"
-                     value="2"/>
-              <label htmlFor="star-2">2</label>
-              <input className="star"
-                     id="star-3"
-                     type="radio"
-                     name="star"
-                     value="3"/>
-              <label htmlFor="star-3">3</label>
-              <input className="star"
-                     id="star-4"
-                     type="radio"
-                     name="star"
-                     value="4"/>
-              <label htmlFor="star-4">4</label>
-              <input className="star"
-                     id="star-5"
-                     type="radio"
-                     name="star"
-                     value="5"/>
-              <label htmlFor="star-5">5</label>
+              <Ratings defaultSelect={this.state.rating} />
             </fieldset>
           </div>
           <label htmlFor="content">Content:</label>
