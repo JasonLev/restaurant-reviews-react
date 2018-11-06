@@ -15,22 +15,29 @@ class ReviewForm extends Component {
     this.submitHandler = this.submitHandler.bind(this)
   }
   handleNameChange(event){
-    this.setState({name: event.target.value})
+    this.setState({name: event.target.value.trim()})
   }
   handleRatingChange(event){
     this.setState({rating: parseInt(event.target.value)*20})
   }
   handleContentChange(event){
-    this.setState({content: event.target.value})
+    let content = event.target.value
+    if (content.length) {
+      this.setState({content: content.trim()})
+    }
   }
   submitHandler(e){
     e.preventDefault()
-    this.props.handleSubmit(this.state)
-    this.setState({
-      name: '',
-      rating: 20,
-      content: ''
-    });
+    if (this.state.name.length && this.state.content) {
+      this.props.handleSubmit(this.state)
+      this.setState({
+        name: '',
+        rating: 20,
+        content: ''
+      });
+    } else {
+      alert("You can't submit the form just yet.  No empty form fields!")
+    }
   }
   render() {
     return (
@@ -41,6 +48,8 @@ class ReviewForm extends Component {
             <label htmlFor="name">Name:</label>
             <input type="text"
                    id="name"
+                   required
+                   maxlength="50"
                    placeholder="Put your name here."
                    onChange={this.handleNameChange}
                    value={this.state.name}/>
@@ -54,6 +63,8 @@ class ReviewForm extends Component {
           <label htmlFor="content">Content:</label>
           <textarea id="content"
                     name="content"
+                    required
+                    maxlength="200"
                     placeholder="Leave your review here"
                     onChange={this.handleContentChange}
                     value={this.state.content}/>
