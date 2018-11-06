@@ -1,0 +1,7 @@
+---
+title: "Restaurant Reviews: React Example of a Yelp(sorta) Clone"
+type: "practice"
+description: "A single-page app for reviewing restaurants."
+behaviors:
+  - react_on_node
+tags: "react, react forms"
