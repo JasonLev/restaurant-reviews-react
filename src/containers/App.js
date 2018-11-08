@@ -20,7 +20,8 @@ class App extends Component {
     this.restaurantClick = this.restaurantClick.bind(this)
     this.handleReviewSubmit = this.handleReviewSubmit.bind(this)
     this.handleRestaurantSubmit = this.handleRestaurantSubmit.bind(this)
-    this.changeView = this.changeView.bind(this)
+    this.displayRestaurantForm = this.displayRestaurantForm.bind(this)
+    this.hideRestaurantForm = this.hideRestaurantForm.bind(this)
   }
   restaurantClick(event) {
     this.setState({
@@ -37,10 +38,16 @@ class App extends Component {
   handleRestaurantSubmit(formState){
     formState.id = this.state.restaurants.length
     this.setState({
-      restaurants: [...this.state.restaurants, formState]
+      restaurants: [...this.state.restaurants, formState],
+      showRestaurantForm: false
     });
   }
-  changeView(){
+  hideRestaurantForm(){
+    this.setState({
+      showRestaurantForm: false
+    });
+  }
+  displayRestaurantForm(){
     this.setState({
       showRestaurantForm: true
     });
@@ -59,7 +66,7 @@ class App extends Component {
   }
   renderRestaurantForm(){
     return (
-      <RestaurantForm onSubmit={this.handleRestaurantSubmit} />
+      <RestaurantForm onSubmit={this.handleRestaurantSubmit} onHide={this.hideRestaurantForm}/>
     )
   }
   render() {
@@ -81,7 +88,7 @@ class App extends Component {
             <div className="small-4 columns">
               <h2>Restaurant List</h2>
               {restaurantComponents}
-              <button className="button success large" onClick={this.changeView}>Add New Restaurant</button>
+              <button className="button success large mts" onClick={this.displayRestaurantForm}>Add New Restaurant</button>
             </div>
             <div className="small-7 small-offset-1 columns">
               {this.state.showRestaurantForm ? this.renderRestaurantForm() : this.renderReviewsPanel()}

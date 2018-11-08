@@ -16,3 +16,15 @@ body {
 .mbl {
   margin-bottom: 20px;
 }
+
+.tag {
+  margin-right: 1em;
+  border: 2px solid orange;
+  color: orange;
+  border-radius: 25%;
+  padding: 0.5em;
+}
+
+.pos-rel {
+  position: relative;
+}
