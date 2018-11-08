@@ -15,7 +15,7 @@ class ReviewForm extends Component {
     this.submitHandler = this.submitHandler.bind(this)
   }
   handleNameChange(event){
-    this.setState({name: event.target.value.trim()})
+    this.setState({name: event.target.value})
   }
   handleRatingChange(event){
     this.setState({rating: parseInt(event.target.value)*20})
@@ -23,13 +23,13 @@ class ReviewForm extends Component {
   handleContentChange(event){
     let content = event.target.value
     if (content.length) {
-      this.setState({content: content.trim()})
+      this.setState({content: content})
     }
   }
   submitHandler(e){
     e.preventDefault()
     if (this.state.name.length && this.state.content) {
-      this.props.handleSubmit(this.state)
+      this.props.onSubmit(this.state)
       this.setState({
         name: '',
         rating: 20,
@@ -49,22 +49,20 @@ class ReviewForm extends Component {
             <input type="text"
                    id="name"
                    required
-                   maxlength="50"
+                   maxLength="50"
                    placeholder="Put your name here."
                    onChange={this.handleNameChange}
                    value={this.state.name}/>
           </div>
-          <div>
-            <fieldset className="fieldset" onChange={this.handleRatingChange}>
-              <legend>Rating:</legend>
-              <Ratings defaultSelect={this.state.rating} />
-            </fieldset>
-          </div>
+          <fieldset className="fieldset" onChange={this.handleRatingChange}>
+            <legend>Rating:</legend>
+            <Ratings defaultSelect={this.state.rating} />
+          </fieldset>
           <label htmlFor="content">Content:</label>
           <textarea id="content"
                     name="content"
                     required
-                    maxlength="200"
+                    maxLength="200"
                     placeholder="Leave your review here"
                     onChange={this.handleContentChange}
                     value={this.state.content}/>

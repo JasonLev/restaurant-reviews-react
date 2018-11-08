@@ -1,3 +1,10 @@
+body {
+  padding: 1em;
+}
+#headerTitle {
+  font-size: 3em;
+  text-align: center;
+}
 .selected {
   background-color: lightblue;
 }
@@ -8,4 +15,16 @@
 
 .mbl {
   margin-bottom: 20px;
+}
+
+.tag {
+  margin-right: 1em;
+  border: 2px solid orange;
+  color: orange;
+  border-radius: 25%;
+  padding: 0.5em;
+}
+
+.pos-rel {
+  position: relative;
 }
