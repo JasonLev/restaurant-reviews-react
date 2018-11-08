@@ -43,6 +43,7 @@ class ReviewForm extends Component {
     return (
       <div className="mbl">
         <h1>Review Form</h1>
+        <h3>Add new review for {this.props.name}:</h3>
         <form onSubmit={this.submitHandler}>
           <div>
             <label htmlFor="name">Name:</label>

@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Restaurant from '../components/Restaurant'
 import Reviews from '../components/Reviews'
 import ReviewForm from '../components/ReviewForm'
-import RestaurantForm from '../components/RestaurantForm'
+import RestaurantForm from './RestaurantForm'
 
 import restaurants from '../constants/restaurants'
 import reviews from '../constants/reviews'
@@ -60,13 +60,13 @@ class App extends Component {
       <div>
         <h2>Reviews for {this.state.restaurants[this.state.selectedId].name}</h2>
         <Reviews data={relevantReviews} />
-        <ReviewForm onSubmit={this.handleReviewSubmit} />
+        <ReviewForm onSubmit={this.handleReviewSubmit} name={this.state.restaurants[this.state.selectedId].name} />
       </div>
     )
   }
   renderRestaurantForm(){
     return (
-      <RestaurantForm onSubmit={this.handleRestaurantSubmit} onHide={this.hideRestaurantForm}/>
+      <RestaurantForm onSubmit={this.handleRestaurantSubmit} onHide={this.hideRestaurantForm} />
     )
   }
   render() {

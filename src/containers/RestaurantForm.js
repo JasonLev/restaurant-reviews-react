@@ -32,6 +32,7 @@ class RestaurantForm extends Component {
       this.setState({
         categories: newCategories
       });
+      this.categoryTextInput.value = ''
     }
   }
   submitHandler(e){
