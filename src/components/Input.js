@@ -1,16 +1,15 @@
 import React from 'react'
 
 const Input = (props) => (
-
-  // <span className="mbl">
-  //   <input className="star"
-  //          id={`star-${props.data}`}
-  //          type="radio"
-  //          name="star"
-  //          checked={props.checked}
-  //          value={props.data}/>
-  //   <label htmlFor={`star-${props.data}`}>{props.data}</label>
-  // </span>
+  <div>
+    <label htmlFor={props.id}>{props.label} (optional):</label>
+    <input type="text"
+           id={props.id}
+           maxLength={props.maxLength}
+           placeholder={props.placeholder}
+           onChange={props.onChange}
+           value={props.value} />
+  </div>
 )
 
 export default Input
