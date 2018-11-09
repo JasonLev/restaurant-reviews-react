@@ -58,38 +58,35 @@ class RestaurantForm extends Component {
         </button>
         <h1>Restaurant Form</h1>
         <form onSubmit={this.submitHandler}>
-          <div>
-            <label htmlFor="name">Restaurant Name:</label>
-            <input type="text"
-                   id="name"
-                   ref={input => { this.firstTextInput = input; }}
-                   required
-                   maxLength="50"
-                   placeholder="What name do you call the restaurant?"
-                   onChange={this.handleInputChange}
-                   value={this.state.name}/>
-          </div>
+          <Input id={"name"}
+                 placeholder="What name do you call the restaurant?"
+                 handleRef={input => { this.firstTextInput = input; }}
+                 label={"Restaurant Name:"}
+                 required={true}
+                 maxLength={50}
+                 value={this.state.name}
+                 onChange={this.handleInputChange} />
           <Input id={"location"}
                  placeholder="Where is this restaurant?"
-                 label={"Location"}
+                 label={"Location (optional):"}
                  maxLength={50}
                  value={this.state.location}
                  onChange={this.handleInputChange} />
           <Input id={"description"}
                  placeholder="How would you describe this restaurant?"
-                 label={"Description"}
+                 label={"Description (optional):"}
                  maxLength={50}
                  value={this.state.description}
                  onChange={this.handleInputChange} />
           <Input id={"image"}
                  placeholder="link to restaurant image?"
-                 label={"Image Link Address"}
+                 label={"Image Link Address (optional):"}
                  maxLength={250}
                  value={this.state.image}
                  onChange={this.handleInputChange} />
           <Input id={"website"}
                  placeholder="website address?"
-                 label={"Website"}
+                 label={"Website (optional):"}
                  maxLength={50}
                  value={this.state.website}
                  onChange={this.handleInputChange} />

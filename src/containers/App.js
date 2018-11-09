@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Restaurant from '../components/Restaurant'
 import Reviews from '../components/Reviews'
-import ReviewForm from '../components/ReviewForm'
+import ReviewForm from './ReviewForm'
 import RestaurantForm from './RestaurantForm'
 
 import restaurants from '../constants/restaurants'
