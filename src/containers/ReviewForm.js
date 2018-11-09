@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Ratings from './Ratings'
+import Ratings from '../components/Ratings'
+import Input from '../components/Input'
 
 class ReviewForm extends Component {
   constructor(props) {
@@ -9,22 +10,15 @@ class ReviewForm extends Component {
       rating: 20,
       content: ''
     }
-    this.handleNameChange = this.handleNameChange.bind(this)
-    this.handleContentChange = this.handleContentChange.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
     this.handleRatingChange = this.handleRatingChange.bind(this)
     this.submitHandler = this.submitHandler.bind(this)
   }
-  handleNameChange(event){
-    this.setState({name: event.target.value})
+  handleInputChange(event){
+    this.setState({[event.target.id]: event.target.value})
   }
   handleRatingChange(event){
     this.setState({rating: parseInt(event.target.value)*20})
-  }
-  handleContentChange(event){
-    let content = event.target.value
-    if (content.length) {
-      this.setState({content: content})
-    }
   }
   submitHandler(e){
     e.preventDefault()
@@ -45,16 +39,14 @@ class ReviewForm extends Component {
         <h1>Review Form</h1>
         <h3>Add new review for {this.props.name}:</h3>
         <form onSubmit={this.submitHandler}>
-          <div>
-            <label htmlFor="name">Name:</label>
-            <input type="text"
-                   id="name"
-                   required
-                   maxLength="50"
-                   placeholder="Put your name here."
-                   onChange={this.handleNameChange}
-                   value={this.state.name}/>
-          </div>
+          <Input id={"name"}
+                 placeholder="Put your name here."
+                 handleRef={input => { this.firstTextInput = input; }}
+                 label={"Reviewer Name:"}
+                 required={true}
+                 maxLength={50}
+                 value={this.state.name}
+                 onChange={this.handleInputChange} />
           <fieldset className="fieldset" onChange={this.handleRatingChange}>
             <legend>Rating:</legend>
             <Ratings defaultSelect={this.state.rating} />
@@ -65,7 +57,7 @@ class ReviewForm extends Component {
                     required
                     maxLength="200"
                     placeholder="Leave your review here"
-                    onChange={this.handleContentChange}
+                    onChange={this.handleInputChange}
                     value={this.state.content}/>
           <button type="submit" className="button large success">Submit</button>
         </form>
