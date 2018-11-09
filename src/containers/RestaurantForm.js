@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Input from '../components/Input'
 
 class RestaurantForm extends Component {
   constructor(props) {
@@ -19,10 +20,7 @@ class RestaurantForm extends Component {
     this.firstTextInput.focus();
   }
   handleInputChange(event){
-    let content = event.target.value
-    if (content.length) {
-      this.setState({[event.target.id]: content})
-    }
+    this.setState({[event.target.id]: event.target.value})
   }
   handleCategoriesChange(){
     let content = this.categoryTextInput.value.trim()
@@ -71,42 +69,30 @@ class RestaurantForm extends Component {
                    onChange={this.handleInputChange}
                    value={this.state.name}/>
           </div>
-          <div>
-            <label htmlFor="location">Location (optional):</label>
-            <input type="text"
-                   id="location"
-                   maxLength="50"
-                   placeholder="Where is this restaurant?"
-                   onChange={this.handleInputChange}
-                   value={this.state.location}/>
-          </div>
-          <div>
-            <label htmlFor="description">Description (optional):</label>
-            <input type="text"
-                   id="description"
-                   maxLength="50"
-                   placeholder="How would you describe this restaurant?"
-                   onChange={this.handleInputChange}
-                   value={this.state.description}/>
-          </div>
-          <div>
-            <label htmlFor="image">Image Link Address (optional):</label>
-            <input type="text"
-                   id="image"
-                   maxLength="250"
-                   placeholder="link to restaurant image?"
-                   onChange={this.handleInputChange}
-                   value={this.state.image}/>
-          </div>
-          <div>
-            <label htmlFor="website">Website (optional):</label>
-            <input type="text"
-                   id="website"
-                   maxLength="50"
-                   placeholder="website address?"
-                   onChange={this.handleInputChange}
-                   value={this.state.website}/>
-          </div>
+          <Input id={"location"}
+                 placeholder="Where is this restaurant?"
+                 label={"Location"}
+                 maxLength={50}
+                 value={this.state.location}
+                 onChange={this.handleInputChange} />
+          <Input id={"description"}
+                 placeholder="How would you describe this restaurant?"
+                 label={"Description"}
+                 maxLength={50}
+                 value={this.state.description}
+                 onChange={this.handleInputChange} />
+          <Input id={"image"}
+                 placeholder="link to restaurant image?"
+                 label={"Image Link Address"}
+                 maxLength={250}
+                 value={this.state.image}
+                 onChange={this.handleInputChange} />
+          <Input id={"website"}
+                 placeholder="website address?"
+                 label={"Website"}
+                 maxLength={50}
+                 value={this.state.website}
+                 onChange={this.handleInputChange} />
           <div className="input-group">
             <span htmlFor="category" className="input-group-label">Tags/Categories (optional):</span>
             <input type="text"
