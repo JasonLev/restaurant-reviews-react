@@ -13,10 +13,9 @@ const Rating = (props) => (
 
 const Ratings = (props) => {
   let ratings = []
-  for (let i = 5; i > 1; i--) {
+  for (let i = 5; i > 0; i--) {
     ratings.push(<Rating key={`rating-${i}`} data={i} checked={props.defaultSelect} />);
   }
-  ratings.push(<Rating key="rating-0" data={1} checked={props.defaultSelect} />);
   return <div className="rating">{ratings}</div>
 }
 
