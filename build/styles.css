@@ -28,3 +28,29 @@ body {
 .pos-rel {
   position: relative;
 }
+/* Star Ratings */
+label {
+  display: inline-block;
+}
+.rating {
+  direction: rtl;
+  float: left;
+}
+.rating input {
+   display: none;
+ }
+.rating label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+.rating label {
+  color: #ddd;
+}
+.rating label:hover, /* hover current star */
+.rating label:hover ~ label, /* hover previous stars in list */
+.rating .fill {
+  color: #FFD700;
+}
